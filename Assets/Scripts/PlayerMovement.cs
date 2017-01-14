@@ -73,13 +73,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && charController.isGrounded)
-        {
+        if (Input.GetButtonDown("Jump") && charController.isGrounded){
             //print("Jump");
             movement.y = jumpSpeed;
 
         }
-        if (!charController.isGrounded)
+		if (Input.GetButtonDown("Fire1") && charController.isGrounded){
+			//print("Jump");
+			GetComponent<DeathandRespawn>().Death();
+
+		}
+
+		if (!charController.isGrounded)
         {
             movement.y += Physics.gravity.y * Time.deltaTime; //gravity val is negative
         }
@@ -137,4 +142,9 @@ public class PlayerMovement : MonoBehaviour
         Vector3 pushDir = hit.moveDirection;
         body.velocity = pushDir * 2f;
     }
+
+
+	public void restartJump(){
+		movement.y = 0;
+	}
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractTileBase : MonoBehaviour {
+public abstract class InteractTileBase : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,11 +13,7 @@ public class InteractTileBase : MonoBehaviour {
 	void Update () {
 	}
 
-	public virtual void Open(){
-	
-	}
+	public abstract void Open ();
 
-	public virtual void Close(){
-		
-	}
+	public abstract void Close ();
 }

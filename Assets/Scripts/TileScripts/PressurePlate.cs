@@ -14,8 +14,9 @@ public class PressurePlate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (Physics.Raycast (transform.position, transform.up, 5f)) {
+		RaycastHit hit;
+
+		if (Physics.SphereCast (transform.position, .4f, transform.up, out hit, 5f)) {
 			//trigger some function, door or drawbridge etc
 			if(!opened){
 				linkedTile.Open ();
@@ -23,6 +24,7 @@ public class PressurePlate : MonoBehaviour {
 			}
 		} else if(opened){
 			linkedTile.Close ();
+			opened = false;
 		}
 	}
 }
