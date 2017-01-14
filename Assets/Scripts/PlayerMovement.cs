@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && charController.isGrounded)
         {
-            print("Jump");
+            //print("Jump");
             movement.y = jumpSpeed;
 
         }
