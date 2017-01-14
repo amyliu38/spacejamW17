@@ -23,6 +23,7 @@ public class PressurePlate : MonoBehaviour {
 			}
 		} else if(opened){
 			linkedTile.Close ();
+			opened = false;
 		}
 	}
 }
