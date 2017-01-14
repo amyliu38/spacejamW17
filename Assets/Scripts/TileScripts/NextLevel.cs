@@ -15,7 +15,7 @@ public class NextLevel : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		RaycastHit hit;
-		if (Physics.SphereCast (transform.position, .4f, transform.up, out hit, 5f)) {
+		if (Physics.SphereCast (transform.position, .35f, transform.up, out hit, 5f)) {
 			if (hit.transform.CompareTag ("Player")) {
 				anim.SetTrigger ("Rise");
 			}
