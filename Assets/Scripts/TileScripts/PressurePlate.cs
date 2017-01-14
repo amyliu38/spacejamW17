@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour {
 
-	public InteractTileBase linkedTile;
+	public InteractTileBase[] linkedTile;
 	Animator anim; 
 	// Use this for initialization
 	void Start () {
@@ -33,12 +33,19 @@ public class PressurePlate : MonoBehaviour {
 	}*/
 
 	void OnTriggerEnter(){
-		linkedTile.Open ();
-		anim.SetBool ("down", true);
+        foreach (InteractTileBase lt in linkedTile)
+        {
+            lt.Open();
+            anim.SetBool("down", true);
+        }
 	}
 
-	void OnTriggerExit(){
-		linkedTile.Close ();
-		anim.SetBool ("down", false);
-	}
+    void OnTriggerExit()
+    {
+        foreach (InteractTileBase lt in linkedTile)
+        {
+            lt.Close();
+            anim.SetBool("down", false);
+        }
+    }
 }
