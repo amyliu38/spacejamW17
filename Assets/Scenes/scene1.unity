@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -281,6 +281,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a0c94b8cf360e74792ac189f44f0016, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &320496100 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1173211245926208, guid: b27b16a59b6722248a94c005653897a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1079806046}
+--- !u!114 &320496101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 320496100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b36efac695f056468520cc3a4b256d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedTile:
+  - {fileID: 1178893542}
 --- !u!1001 &956409892
 Prefab:
   m_ObjectHideFlags: 0
@@ -476,7 +494,7 @@ Prefab:
         type: 2}
       propertyPath: linkedTile
       value: 
-      objectReference: {fileID: 1178893542}
+      objectReference: {fileID: 0}
     - target: {fileID: 65802443929282200, guid: b27b16a59b6722248a94c005653897a6,
         type: 2}
       propertyPath: m_Size.x
@@ -492,7 +510,13 @@ Prefab:
       propertyPath: m_Size.y
       value: 0.8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114302514025808668, guid: b27b16a59b6722248a94c005653897a6,
+        type: 2}
+      propertyPath: linkedTile.Array.data[0]
+      value: 
+      objectReference: {fileID: 1178893542}
+    m_RemovedComponents:
+    - {fileID: 114302514025808668, guid: b27b16a59b6722248a94c005653897a6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b27b16a59b6722248a94c005653897a6, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1178893542 stripped
@@ -563,7 +587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b36efac695f056468520cc3a4b256d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedTile: {fileID: 1178893542}
+  linkedTile:
+  - {fileID: 0}
 --- !u!1001 &1417749634
 Prefab:
   m_ObjectHideFlags: 0
