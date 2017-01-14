@@ -27,9 +27,11 @@ public class DeathandRespawn : MonoBehaviour {
 	}
 
 	public void Death(){
-		Vector3 pos = this.transform.position + new Vector3(0,0.5f,0);
+		
+		Vector3 pos = this.transform.position + new Vector3(0,1f,0);
 		GameObject corp = Instantiate (Corpse, pos, Corpse.transform.rotation);
-		corp.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		//corp.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+
 		Respawn ();
 	}
 

@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     float forwardInput, sideInput;
 	float jumpCounter = 0;
+	bool canMove = true; 
 
 	Transform Player_Body;
 
@@ -69,15 +70,22 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
+	{	
+		Jump();
+		if (!canMove) {
+			movement.x = 0;
+			movement.z = 0;
+			return;
+		}
+
 		GetInput();
         Run();
-        Jump();
+
     }
 
     void Jump()
     {
-		if (Input.GetButtonDown("Jump") && jumpCounter < numJumps){
+		if (Input.GetButton("Jump") && jumpCounter < numJumps){
             //print("Jump");
 
 			movement.y = jumpSpeed;
@@ -85,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
-		if (Input.GetButtonDown("Fire1") && charController.isGrounded){
+		if (Input.GetButton("Fire1") && charController.isGrounded){
 			//print("Jump");
 			GetComponent<DeathandRespawn>().Death();
 
@@ -150,5 +158,8 @@ public class PlayerMovement : MonoBehaviour
 
 	public void restartJump(){
 		movement.y = 0;
+	}
+	public void disableMovement(){
+		canMove = false;
 	}
 }
