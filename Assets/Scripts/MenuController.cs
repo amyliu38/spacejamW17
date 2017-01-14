@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
-	public void Start(){
-		
+	public void StartGame(){
+		SceneManager.LoadScene ("scene0");
 	}
 
 	public void Quit(){
