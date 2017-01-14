@@ -205,9 +205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputDelay: 0.1
-  forwardVel: 1
-  rotateVel: 1
-  jumpSpeed: 3
+  forwardVel: 100
+  rotateVel: 100
+  jumpSpeed: 5
 --- !u!114 &114768756647771858
 MonoBehaviour:
   m_ObjectHideFlags: 1

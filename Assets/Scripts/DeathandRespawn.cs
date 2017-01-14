@@ -32,4 +32,12 @@ public class DeathandRespawn : MonoBehaviour {
 		corp.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		Respawn ();
 	}
+
+
+
+
+
+
+
+
 }
