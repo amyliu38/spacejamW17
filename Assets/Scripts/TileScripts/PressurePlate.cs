@@ -5,7 +5,6 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour {
 
 	public InteractTileBase linkedTile;
-	bool opened = false;
 	Animator anim; 
 	// Use this for initialization
 	void Start () {
@@ -35,11 +34,11 @@ public class PressurePlate : MonoBehaviour {
 
 	void OnTriggerEnter(){
 		linkedTile.Open ();
-		anim.SetBool ("down", opened);
+		anim.SetBool ("down", true);
 	}
 
 	void OnTriggerExit(){
 		linkedTile.Close ();
-		anim.SetBool ("down", opened);
+		anim.SetBool ("down", false);
 	}
 }
