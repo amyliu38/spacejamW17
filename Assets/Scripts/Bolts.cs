@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bolts : MonoBehaviour {
 
+	public NextLevel elevator;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,7 +18,8 @@ public class Bolts : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		print (coll.transform.tag);
 		if (coll.transform.CompareTag ("Player")) {
-			//update UI?
+			//update UI? lower elevator?
+			elevator.LowerElevator();
 			Destroy (gameObject);
 		}
 	}

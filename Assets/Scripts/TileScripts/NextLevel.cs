@@ -35,5 +35,9 @@ public class NextLevel : MonoBehaviour {
 
 	}
 
+	public void LowerElevator(){
+		anim.SetTrigger ("Lower");
+	}
+
 
 }
