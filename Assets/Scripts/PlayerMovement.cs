@@ -4,15 +4,15 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     public float inputDelay = 0.1f;
-    public float forwardVel = 12;
-    public float rotateVel = 100;
-    public float jumpSpeed = 100;
+    public float forwardVel = 12; //move speed
+    public float rotateVel = 100; //rotate speed
+    public float jumpSpeed = 100; //initial jump speed, affects height
 
-    Vector3 movement = Vector3.zero;
-    CharacterController charController;
+    Vector3 movement = Vector3.zero; // 
+    CharacterController charController; //gives access to isGrounded, Move (allows movement and jump
 
-    Quaternion targetRotation;
-    Rigidbody rBody;
+    Quaternion targetRotation; 
+    Rigidbody rBody; //treats as solid object that can move. req'd for movement
 
     float forwardInput, turnInput;
 
@@ -68,9 +68,14 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Run();
+        Jump();
+    }
+
+    void Jump()
+    {
         if (!charController.isGrounded)
         {
-            movement.y += Physics.gravity.y * Time.deltaTime;
+            movement.y += Physics.gravity.y * Time.deltaTime; //gravity val is negative
         }
         charController.Move(movement * Time.deltaTime);
     }
@@ -80,13 +85,14 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(forwardInput) > inputDelay)
         {
             //move
-            float j = movement.y;
+            float tempJumpVar = movement.y;
             double movementScaling = ((charController.isGrounded) ? 1 : 0.5);
-            movement = transform.forward * forwardInput * forwardVel * (float)movementScaling;
-            movement.y = j;
+            movement = transform.forward * forwardInput * forwardVel * (float)movementScaling; //reset vector, including y, which we dont want
+            movement.y = tempJumpVar; //resets y to previous intended value
         }
         else
         {
+            //no movement, but jump is allowed
             movement.x = 0;
             movement.z = 0;
         }
