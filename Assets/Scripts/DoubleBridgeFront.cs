@@ -23,6 +23,6 @@ public class DoubleBridgeFront : InteractTileBase {
 
     public override void Close()
     {
-        anim.SetBool("FrontRaise", false);
+        anim.SetBool("FrontLower", false);
     }
 }
