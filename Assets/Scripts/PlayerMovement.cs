@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInput();
-        Turn();
+//        Turn();
     }
 
     void FixedUpdate()
@@ -82,29 +82,34 @@ public class PlayerMovement : MonoBehaviour
 
     void Run()
     {
+
+		double movementScaling = ((charController.isGrounded) ? 1 : 0.5);
         if (Mathf.Abs(forwardInput) > inputDelay)
         {
             //move
-            float tempJumpVar = movement.y;
-            double movementScaling = ((charController.isGrounded) ? 1 : 0.5);
-            movement = transform.forward * forwardInput * forwardVel * (float)movementScaling; //reset vector, including y, which we dont want
-            movement.y = tempJumpVar; //resets y to previous intended value
+			movement.z = forwardInput * forwardVel * (float)movementScaling;
         }
-        else
+		else
         {
             //no movement, but jump is allowed
-            movement.x = 0;
-            movement.z = 0;
+
+			movement.z = 0;
         }
+
+		if (Mathf.Abs (turnInput) > inputDelay) {
+			movement.x = turnInput * rotateVel * (float)movementScaling;
+		} else {
+			movement.x = 0;
+		}
     }
 
     void Turn()
     {
-        if (Mathf.Abs(turnInput) > inputDelay)
-        {
-            targetRotation *= Quaternion.AngleAxis(rotateVel * turnInput * Time.deltaTime, Vector3.up);
-        }
-        transform.rotation = targetRotation;
+        //if (Mathf.Abs(turnInput) > inputDelay)
+        //{
+         //   targetRotation *= Quaternion.AngleAxis(rotateVel * turnInput * Time.deltaTime, Vector3.up);
+        //}
+        //transform.rotation = targetRotation;
     }
 
 
