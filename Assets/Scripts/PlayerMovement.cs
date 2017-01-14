@@ -15,8 +15,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rBody; //treats as solid object that can move. req'd for movement
 
     float forwardInput, turnInput;
+	float Dest_Angle = 0;
+	Transform Player_Body;
 
-    public Quaternion TargetRotation
+	public Quaternion TargetRotation
     {
         get { return targetRotation; }
     }
@@ -43,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogError("The Character needs a CharacterController");
         }
 
+		Player_Body = GetComponentInChildren<Transform> ();
+
+
         forwardInput = 0;
         turnInput = 0;
     }
@@ -57,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInput();
-        Turn();
+        //Turn();
     }
 
     void FixedUpdate()
@@ -70,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && charController.isGrounded)
         {
-            print("Jump");
+            //print("Jump");
             movement.y = jumpSpeed;
 
         }
@@ -83,29 +88,41 @@ public class PlayerMovement : MonoBehaviour
 
     void Run()
     {
+
+		double movementScaling = ((charController.isGrounded) ? 1 : 0.5);
         if (Mathf.Abs(forwardInput) > inputDelay)
         {
             //move
-            float tempJumpVar = movement.y;
-            double movementScaling = ((charController.isGrounded) ? 1 : 0.5);
-            movement = transform.forward * forwardInput * forwardVel * (float)movementScaling; //reset vector, including y, which we dont want
-            movement.y = tempJumpVar; //resets y to previous intended value
+			movement.x = forwardInput * forwardVel * (float)movementScaling;
         }
-        else
+		else
         {
             //no movement, but jump is allowed
-            movement.x = 0;
-            movement.z = 0;
+
+			movement.x = 0;
         }
+
+		if (Mathf.Abs (turnInput) > inputDelay) {
+			movement.z = turnInput * rotateVel * (float)movementScaling;
+		} else {
+			movement.z = 0;
+		}
+
+		if (movement.x != 0 || movement.z != 0) {
+			Dest_Angle = Mathf.Rad2Deg * Mathf.Atan2 (movement.z, movement.x);
+		}
+
+		//print(Dest_Angle);
+
     }
 
     void Turn()
-    {
-        if (Mathf.Abs(turnInput) > inputDelay)
-        {
-            targetRotation *= Quaternion.AngleAxis(rotateVel * turnInput * Time.deltaTime, Vector3.up);
+    {	
+		int Dir = (Dest_Angle < (Player_Body.rotation.eulerAngles.y-90)) ? -1 : 1;
+		if (Mathf.Abs(Dest_Angle - (Player_Body.rotation.eulerAngles.y-90)) > 30){
+			
+			Player_Body.Rotate (0, Dir * 70 * Time.deltaTime, 0);
         }
-        transform.rotation = targetRotation;
     }
 
 
