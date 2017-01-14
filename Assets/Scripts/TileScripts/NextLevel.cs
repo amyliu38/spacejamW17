@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour {
 
+	public bool levelStart = false;
 	Animator anim;
 	// Use this for initialization
 	void Start () {
@@ -12,19 +13,18 @@ public class NextLevel : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	void OnCollisionEnter(Collision coll){
-		//send message to pause player movement
-		coll.transform.parent = transform;
-		anim.SetTrigger ("Rise");
+	void FixedUpdate () {
+		if (Physics.Raycast (transform.position, transform.up, 5f)) {
+			anim.SetTrigger ("Rise");
+		}
 	}
 
 	void LoadNextLevel(){
-		int levelIdx = SceneManager.GetActiveScene ().buildIndex;
-		SceneManager.LoadScene (++levelIdx);
+		if (!levelStart) {
+			int levelIdx = SceneManager.GetActiveScene ().buildIndex;
+			SceneManager.LoadScene (++levelIdx);
+		}
+
 	}
 
 

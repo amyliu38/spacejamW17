@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpSpeed = 100; //initial jump speed, affects height
 
     Vector3 movement = Vector3.zero; // 
-    CharacterController charController; //gives access to isGrounded, Move (allows movement and jump
+    CharacterController charController; //gives access to isGrounded, Move (allows movement and jump)
 
     Quaternion targetRotation; 
     Rigidbody rBody; //treats as solid object that can move. req'd for movement
@@ -56,12 +56,7 @@ public class PlayerMovement : MonoBehaviour
     {
         forwardInput = Input.GetAxis("Vertical");
         turnInput = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump") && charController.isGrounded)
-        {
-            print("Jump");
-            movement.y = jumpSpeed;
-       
-        }
+        
     }
 
     void Update()
@@ -78,6 +73,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        if (Input.GetButtonDown("Jump") && charController.isGrounded)
+        {
+            print("Jump");
+            movement.y = jumpSpeed;
+
+        }
         if (!charController.isGrounded)
         {
             movement.y += Physics.gravity.y * Time.deltaTime; //gravity val is negative
