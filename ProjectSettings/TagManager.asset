@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpawnPoint
   - Trap
+  - Corpse
   layers:
   - Default
   - TransparentFX
