@@ -5,8 +5,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public float inputDelay = 0.1f;
     public float forwardVel = 12; //move speed
-    public float rotateVel = 100; //rotate speed
+    public float sideVel = 100; //rotate speed
     public float jumpSpeed = 100; //initial jump speed, affects height
+	public float numJumps = 1;
+
 
     Vector3 movement = Vector3.zero; // 
     CharacterController charController; //gives access to isGrounded, Move (allows movement and jump)
@@ -14,8 +16,9 @@ public class PlayerMovement : MonoBehaviour
     Quaternion targetRotation; 
     Rigidbody rBody; //treats as solid object that can move. req'd for movement
 
-    float forwardInput, turnInput;
-	float Dest_Angle = 0;
+    float forwardInput, sideInput;
+	float jumpCounter = 0;
+
 	Transform Player_Body;
 
 	public Quaternion TargetRotation
@@ -49,33 +52,37 @@ public class PlayerMovement : MonoBehaviour
 
 
         forwardInput = 0;
-        turnInput = 0;
+        sideInput = 0;
     }
 
     void GetInput()
     {
         forwardInput = Input.GetAxis("Vertical");
-        turnInput = Input.GetAxis("Horizontal");
+        sideInput = Input.GetAxis("Horizontal");
         
     }
 
     void Update()
     {
-        GetInput();
+        
         //Turn();
     }
 
     void FixedUpdate()
     {
+		GetInput();
         Run();
         Jump();
     }
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && charController.isGrounded){
+		if (Input.GetButtonDown("Jump") && jumpCounter < numJumps){
             //print("Jump");
-            movement.y = jumpSpeed;
+
+			movement.y = jumpSpeed;
+			jumpCounter++;
+
 
         }
 		if (Input.GetButtonDown("Fire1") && charController.isGrounded){
@@ -84,10 +91,13 @@ public class PlayerMovement : MonoBehaviour
 
 		}
 
-		if (!charController.isGrounded)
-        {
-            movement.y += Physics.gravity.y * Time.deltaTime; //gravity val is negative
-        }
+		if (!charController.isGrounded) {
+			movement.y += Physics.gravity.y * Time.deltaTime; //gravity val is negative
+		} else {
+			jumpCounter = 0;
+		}
+
+
         charController.Move(movement * Time.deltaTime);
     }
 
@@ -98,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(forwardInput) > inputDelay)
         {
             //move
-			movement.x = forwardInput * forwardVel * (float)movementScaling;
+			movement.x = forwardInput * forwardVel * (float)movementScaling * Time.deltaTime;
         }
 		else
         {
@@ -107,33 +117,27 @@ public class PlayerMovement : MonoBehaviour
 			movement.x = 0;
         }
 
-		if (Mathf.Abs (turnInput) > inputDelay) {
-			movement.z = turnInput * rotateVel * (float)movementScaling;
+		if (Mathf.Abs (sideInput) > inputDelay) {
+			movement.z = sideInput * sideVel * (float)movementScaling * Time.deltaTime;
 		} else {
 			movement.z = 0;
 		}
 
-		if (movement.x != 0 || movement.z != 0) {
-			Dest_Angle = Mathf.Rad2Deg * Mathf.Atan2 (movement.z, movement.x);
-		}
-
-		//print(Dest_Angle);
 
     }
 
     void Turn()
     {	
-		int Dir = (Dest_Angle < (Player_Body.rotation.eulerAngles.y-90)) ? -1 : 1;
-		if (Mathf.Abs(Dest_Angle - (Player_Body.rotation.eulerAngles.y-90)) > 30){
-			
-			Player_Body.Rotate (0, Dir * 70 * Time.deltaTime, 0);
-        }
-    }
+	 }
 
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Rigidbody body = hit.collider.attachedRigidbody;
+		if(hit.gameObject.tag.Equals("Trap")){
+			GetComponent<DeathandRespawn>().Death();
+		}
+			
+		Rigidbody body = hit.collider.attachedRigidbody;
 
         if(body == null || body.isKinematic){return;}
 
