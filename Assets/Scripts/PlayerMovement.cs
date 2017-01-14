@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInput();
-        Turn();
+        //Turn();
     }
 
     void FixedUpdate()
@@ -92,19 +92,19 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(forwardInput) > inputDelay)
         {
             //move
-			movement.z = forwardInput * forwardVel * (float)movementScaling;
+			movement.x = forwardInput * forwardVel * (float)movementScaling;
         }
 		else
         {
             //no movement, but jump is allowed
 
-			movement.z = 0;
+			movement.x = 0;
         }
 
 		if (Mathf.Abs (turnInput) > inputDelay) {
-			movement.x = turnInput * rotateVel * (float)movementScaling;
+			movement.z = turnInput * rotateVel * (float)movementScaling;
 		} else {
-			movement.x = 0;
+			movement.z = 0;
 		}
 
 		if (movement.x != 0 || movement.z != 0) {
