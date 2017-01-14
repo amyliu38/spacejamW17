@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlatformMove : MonoBehaviour {
 
     Animator anim;
-    public bool moveRL = false;
-    public bool moveUD = false;
+    public bool moveRL;
+    public bool moveUD;
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
