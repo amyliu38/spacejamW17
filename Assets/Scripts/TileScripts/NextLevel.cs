@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour {
-
+    AudioSource sound;
 	public bool levelStart = false;
 	bool started = false;
 	PlayerMovement playerscript;
 	Animator anim;
 	// Use this for initialization
 	void Start () {
+        sound = GetComponent<AudioSource>();
 		anim = GetComponent<Animator> ();
 		playerscript = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerMovement> ();
 	}
@@ -45,5 +46,8 @@ public class NextLevel : MonoBehaviour {
 		anim.SetTrigger ("Lower");
 	}
 
-
+    public void PlayAudio()
+    {
+        sound.Play();
+    }
 }

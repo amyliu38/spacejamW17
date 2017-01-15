@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bolts : MonoBehaviour {
-
+    AudioSource sound;
 	public NextLevel elevator;
 	// Use this for initialization
 	void Start () {
-		
+        sound = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -19,7 +19,8 @@ public class Bolts : MonoBehaviour {
 		print (coll.transform.tag);
 		if (coll.transform.CompareTag ("Player")) {
 			elevator.LowerElevator();
-			Destroy (this.transform.parent.gameObject);
+            AudioSource.PlayClipAtPoint(sound.clip, transform.position);
+            Destroy (this.transform.parent.gameObject);
 		}
 	}
 }
