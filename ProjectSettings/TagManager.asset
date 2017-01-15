@@ -7,6 +7,7 @@ TagManager:
   - SpawnPoint
   - Trap
   - Corpse
+  - AxisGuide
   layers:
   - Default
   - TransparentFX

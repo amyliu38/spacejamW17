@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
 	Transform Player_Body;
 
+	Transform axisGuide;
+
 	public Quaternion TargetRotation
     {
         get { return targetRotation; }
@@ -33,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+		//axisGuide = GameObject.FindGameObjectWithTag ("AxisGuide").transform;
 
         targetRotation = transform.rotation;
         if (GetComponent<Rigidbody>())
