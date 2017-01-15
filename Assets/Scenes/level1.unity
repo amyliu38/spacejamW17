@@ -431,7 +431,7 @@ Transform:
   m_LocalScale: {x: 3.333335, y: 3.3333335, z: 3.3333347}
   m_Children: []
   m_Father: {fileID: 435237015}
-  m_RootOrder: 23
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!108 &1402272090
 Light:
