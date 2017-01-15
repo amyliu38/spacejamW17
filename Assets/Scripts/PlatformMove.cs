@@ -42,18 +42,14 @@ public class PlatformMove : MonoBehaviour {
 	}*/
 
 	void OnTriggerEnter(Collider coll){
-		print ("enter " + coll.name);
 		if(coll.transform.CompareTag("Player")){
 			coll.transform.parent = transform;
-			print ("enter");
 		}
 	}
 
 	void OnTriggerExit( Collider coll){
-		print ("exit " + coll.name);
 		if (coll.transform.CompareTag ("Player")) {
 			coll.transform.parent = null;
-			print ("exit");
 		}
 	}
 }
