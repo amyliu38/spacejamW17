@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogError("The Character needs a CharacterController");
         }
 
-        
+        //fixxxxxxxxxxxxx
         if (GameObject.FindGameObjectWithTag("Lovemaking").GetComponent<ParticleSystem>())
         {
             love = GameObject.FindGameObjectWithTag("Lovemaking").GetComponent<ParticleSystem>();
