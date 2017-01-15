@@ -622,7 +622,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114386515664812812, guid: d1a99b4d0e68a44448d3c4b7e389de7d,
+    - target: {fileID: 114101353285334590, guid: d1a99b4d0e68a44448d3c4b7e389de7d,
         type: 2}
       propertyPath: elevator
       value: 
