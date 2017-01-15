@@ -40,6 +40,7 @@ public class DeathandRespawn : MonoBehaviour {
 		GameObject corp = Instantiate (Corpse, pos, Corpse.transform.rotation);
 
 		Respawn ();
+	
 	}
 
 

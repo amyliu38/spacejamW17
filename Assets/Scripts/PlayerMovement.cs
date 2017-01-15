@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -99,6 +100,9 @@ public class PlayerMovement : MonoBehaviour
 			GetComponent<DeathandRespawn>().Death();
 
 		}
+		if (Input.GetButtonDown("Restart")) {
+			SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
+		} 
 
 		if (!charController.isGrounded) {
 			movement.y += Physics.gravity.y * Time.deltaTime; //gravity val is negative
