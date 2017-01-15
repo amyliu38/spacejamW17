@@ -213,4 +213,8 @@ public class PlayerMovement : MonoBehaviour
 		forwardVel*=2f;
 		sideVel *= 2f;
 	}
+
+	public float getDestAngle(){
+		return Dest_Angle;
+	}
 }

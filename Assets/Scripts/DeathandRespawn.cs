@@ -7,13 +7,14 @@ public class DeathandRespawn : MonoBehaviour {
 
 	public GameObject Corpse;
 	Transform Respawn_Platform;
+	PlayerMovement movementScript;
 	// Use this for initialization
 
 	int Lives = 4;
 
 	void Start () {
 		Respawn_Platform = GameObject.FindGameObjectWithTag ("SpawnPoint").transform;
-
+		movementScript = GetComponent<PlayerMovement> ();
 	}
 	
 	// Update is called once per frame
@@ -32,11 +33,14 @@ public class DeathandRespawn : MonoBehaviour {
 
 	public void Death(){
 		Lives--;
+		print (movementScript.getDestAngle ());
+
 
 		if (Lives == 0) {
 			SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
 		} 
 		Vector3 pos = this.transform.position + new Vector3 (0, 1f, 0);
+
 		GameObject corp = Instantiate (Corpse, pos, Corpse.transform.rotation);
 
 		Respawn ();
