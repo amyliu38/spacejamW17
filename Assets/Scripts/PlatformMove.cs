@@ -41,8 +41,8 @@ public class PlatformMove : MonoBehaviour {
         }
 	}*/
 
-	void OnTriggerEnter(Collider coll){
-		if(coll.transform.CompareTag("Player")){
+	void OnTriggerStay(Collider coll){
+		if(coll.transform.CompareTag("Player") && !coll.transform.parent){
 			coll.transform.parent = transform;
 		}
 	}
