@@ -15,6 +15,10 @@ public class MenuController : MonoBehaviour {
 		//SceneManager.LoadScene ("level1");
 	}
 
+	public void Restart(){
+		SceneManager.LoadScene ("Start");
+	}
+
 	public void Quit(){
 		Application.Quit ();
 	}
