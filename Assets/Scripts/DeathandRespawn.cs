@@ -42,12 +42,4 @@ public class DeathandRespawn : MonoBehaviour {
 		Respawn ();
         sound.Play();
     }
-
-
-
-
-
-
-
-
 }
