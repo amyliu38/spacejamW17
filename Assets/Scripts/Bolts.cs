@@ -16,7 +16,6 @@ public class Bolts : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider coll){
-		print (coll.transform.tag);
 		if (coll.transform.CompareTag ("Player")) {
 			elevator.LowerElevator();
 			Destroy (this.transform.parent.gameObject);
