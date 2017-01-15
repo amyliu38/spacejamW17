@@ -33,7 +33,7 @@ public class DeathandRespawn : MonoBehaviour {
 
 	public void Death(){
 		Lives--;
-		print (movementScript.getDestAngle ());
+		//print ();
 
 
 		if (Lives == 0) {
@@ -41,7 +41,9 @@ public class DeathandRespawn : MonoBehaviour {
 		} 
 		Vector3 pos = this.transform.position + new Vector3 (0, 1f, 0);
 
-		GameObject corp = Instantiate (Corpse, pos, Corpse.transform.rotation);
+		Quaternion rot = Quaternion.Euler(Corpse.transform.rotation.eulerAngles.x, movementScript.getDestAngle (), Corpse.transform.rotation.eulerAngles.z); 
+
+		GameObject corp = Instantiate (Corpse, pos, rot);
 
 		Respawn ();
 	

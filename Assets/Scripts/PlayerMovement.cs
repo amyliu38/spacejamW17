@@ -139,24 +139,24 @@ public class PlayerMovement : MonoBehaviour
 			
 			if (movement.x > 0) {
 				//print ("front");
-				Dest_Angle = 180;
+				Dest_Angle = 0;
 			}
 			else if (movement.x < 0) {
 				//print ("back");
-				Dest_Angle = 0;
+				Dest_Angle = 180;
 			}
 
 			if (movement.z > 0) {
 				//print ("left");
-				Dest_Angle = 90;
+				Dest_Angle = 270;
 			}
 			else if (movement.z < 0) {
 				//print ("right");
-				Dest_Angle = 270;
+				Dest_Angle = 90;
 			}
 			float YAngle = this.transform.rotation.eulerAngles.y;
 
-			if (Dest_Angle < YAngle - 180) {
+			if (Dest_Angle < YAngle) {
 				rotDirection = -1;
 			} else {
 				rotDirection = 1;
