@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         }
 		if (Input.GetButton("Fire1") && charController.isGrounded){
 			//print("Jump");
-			GetComponent<DeathandRespawn>().Death();
+			GetComponent<DeathandRespawn>().Death(false);
 
 		}
 		if (Input.GetButtonDown("Restart")) {
@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
 		if(hit.gameObject.tag.Equals("Trap")){
-			GetComponent<DeathandRespawn>().Death();
+			GetComponent<DeathandRespawn>().Death(true);
 		}
 			
 		Rigidbody body = hit.collider.attachedRigidbody;
