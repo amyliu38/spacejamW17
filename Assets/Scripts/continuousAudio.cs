@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class continuousAudio : MonoBehaviour {
-    AudioSource audio;
+    AudioSource music;
 
     // Use this for initialization
 	void Awake () {
-        audio = GetComponent<AudioSource>();
-        audio.Play();
+        music = GetComponent<AudioSource>();
+        music.Play();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        DontDestroyOnLoad(music);
 		
 	}
 }
