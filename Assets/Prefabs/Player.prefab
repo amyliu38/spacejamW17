@@ -2101,7 +2101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145f66e43d85b9044949323a1653e553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputDelay: 0.5
+  inputDelay: 0.2
   forwardVel: 100
   sideVel: 100
   jumpSpeed: 5

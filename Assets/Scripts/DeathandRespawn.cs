@@ -32,7 +32,7 @@ public class DeathandRespawn : MonoBehaviour {
 		GetComponent<PlayerMovement>().restartJump ();
 	}
 
-	public void Death(){
+	public void Death(bool killed){
 		Lives--;
 		//print ();
 
@@ -42,7 +42,10 @@ public class DeathandRespawn : MonoBehaviour {
 		} 
 		Vector3 pos = this.transform.position + new Vector3 (0, 1f, 0);
 
-		Quaternion rot = Quaternion.Euler(Corpse.transform.rotation.eulerAngles.x, movementScript.getDestAngle (), Corpse.transform.rotation.eulerAngles.z); 
+		Quaternion rot = Quaternion.Euler(Corpse.transform.rotation.eulerAngles.x, movementScript.getDestAngle () + 180, Corpse.transform.rotation.eulerAngles.z); 
+		if (!killed) {
+			rot = Corpse.transform.rotation;
+		}
 
 		GameObject corp = Instantiate (Corpse, pos, rot);
 
