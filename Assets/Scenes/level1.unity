@@ -436,9 +436,15 @@ Prefab:
       propertyPath: m_Name
       value: tileBase (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4376064339100464, guid: 3a0c94b8cf360e74792ac189f44f0016, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+    - target: {fileID: 198931884044685106, guid: 3a0c94b8cf360e74792ac189f44f0016,
+        type: 2}
+      propertyPath: startDelay.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198931884044685106, guid: 3a0c94b8cf360e74792ac189f44f0016,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1312984409
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a0c94b8cf360e74792ac189f44f0016, type: 2}
@@ -581,6 +587,10 @@ Prefab:
     - target: {fileID: 65400659673276654, guid: 3a0c94b8cf360e74792ac189f44f0016,
         type: 2}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142970877612958, guid: 3a0c94b8cf360e74792ac189f44f0016, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
