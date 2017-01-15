@@ -18,7 +18,6 @@ public class Bolts : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		print (coll.transform.tag);
 		if (coll.transform.CompareTag ("Player")) {
-			//update UI? lower elevator?
 			elevator.LowerElevator();
 			Destroy (this.transform.parent.gameObject);
 		}

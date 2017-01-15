@@ -199,4 +199,14 @@ public class PlayerMovement : MonoBehaviour
 	public void disableMovement(){
 		canMove = false;
 	}
+
+	public void reduceSpeed(){
+		forwardVel *= .5f;
+		sideVel *= .5f;
+	}
+
+	public void restoreSpeed(){
+		forwardVel*=2f;
+		sideVel *= 2f;
+	}
 }
