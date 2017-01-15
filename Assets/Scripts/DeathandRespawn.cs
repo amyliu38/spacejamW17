@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DeathandRespawn : MonoBehaviour {
-
+    AudioSource sound;
 	public GameObject Corpse;
 	Transform Respawn_Platform;
 	PlayerMovement movementScript;
@@ -13,6 +13,7 @@ public class DeathandRespawn : MonoBehaviour {
 	int Lives = 4;
 
 	void Start () {
+        sound = GetComponent<AudioSource>();
 		Respawn_Platform = GameObject.FindGameObjectWithTag ("SpawnPoint").transform;
 		movementScript = GetComponent<PlayerMovement> ();
 	}
@@ -46,6 +47,7 @@ public class DeathandRespawn : MonoBehaviour {
 		GameObject corp = Instantiate (Corpse, pos, rot);
 
 		Respawn ();
+        sound.Play();
 	
 	}
 
