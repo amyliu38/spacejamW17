@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-		if (Input.GetButton("Jump") && jumpCounter < numJumps){
+		if (Input.GetButton("Jump") && jumpCounter < numJumps && canMove){
             //print("Jump");
 
 			movement.y = jumpSpeed;
