@@ -22,7 +22,7 @@ public class DeathandRespawn : MonoBehaviour {
 
 
 	public void Respawn(){
-		this.transform.position = Respawn_Platform.position + new Vector3 (0, 10, 0);
+		this.transform.position = Respawn_Platform.position + new Vector3 (0, 20, 0);
 		GetComponent<PlayerMovement>().restartJump ();
 	}
 
