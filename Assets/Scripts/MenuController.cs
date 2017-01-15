@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
+	Animator anim;
+	void Start(){
+		anim = FindObjectOfType<Animator>().GetComponent<Animator> ();	
+	}
+
 	public void StartGame(){
-		SceneManager.LoadScene ("level1");
+		anim.SetTrigger ("startGame");
+		//SceneManager.LoadScene ("level1");
 	}
 
 	public void Quit(){
