@@ -18,12 +18,12 @@ public class NextLevel : MonoBehaviour {
 	void FixedUpdate () {
 		RaycastHit hit;
 		if (Physics.SphereCast (transform.position, .35f, transform.up, out hit, 5f)) {
-			if (hit.transform.CompareTag ("Player") && !levelStart) {
-				playerscript.disableMovement ();
+			if (hit.transform.CompareTag ("Player")) {
+				//playerscript.disableMovement ();
 				//Invoke ("playerscript.disableMovement", 0.001f);
+				anim.SetTrigger ("Rise");
 
 			}
-			anim.SetTrigger ("Rise");
 		}
 	}
 
