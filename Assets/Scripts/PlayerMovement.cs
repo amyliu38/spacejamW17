@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //fixxxxxxxxxxxxx
-        if (GameObject.FindGameObjectWithTag("Lovemaking").GetComponent<ParticleSystem>())
+        if (GameObject.FindGameObjectWithTag("Lovemaking"))
         {
             love = GameObject.FindGameObjectWithTag("Lovemaking").GetComponent<ParticleSystem>();
             love.Stop();
