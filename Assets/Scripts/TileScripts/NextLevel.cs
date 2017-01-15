@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class NextLevel : MonoBehaviour {
 
 	public bool levelStart = false;
+	bool started = false;
 	PlayerMovement playerscript;
 	Animator anim;
 	// Use this for initialization
@@ -17,18 +18,23 @@ public class NextLevel : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		RaycastHit hit;
-		if (Physics.SphereCast (transform.position, .35f, transform.up, out hit, 5f)) {
+		if (!started && Physics.SphereCast (transform.position, .35f, transform.up, out hit, 5f)) {
 			if (hit.transform.CompareTag ("Player")) {
+				playerscript.reduceSpeed ();
+				playerscript.gameObject.transform.parent = transform;
 				//playerscript.disableMovement ();
 				//Invoke ("playerscript.disableMovement", 0.001f);
 				anim.SetTrigger ("Rise");
-
+				started = true;
 			}
 		}
 	}
 
 	void LoadNextLevel(){
-		if (!levelStart) {
+		if (levelStart) {
+			playerscript.restoreSpeed ();
+			playerscript.gameObject.transform.parent = null;
+		} else {
 			int levelIdx = SceneManager.GetActiveScene ().buildIndex;
 			SceneManager.LoadScene (++levelIdx);
 		}
