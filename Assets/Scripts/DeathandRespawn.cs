@@ -7,6 +7,9 @@ public class DeathandRespawn : MonoBehaviour {
 	public GameObject Corpse;
 	Transform Respawn_Platform;
 	// Use this for initialization
+
+	int Lives = 4;
+
 	void Start () {
 		Respawn_Platform = GameObject.FindGameObjectWithTag ("SpawnPoint").transform;
 
@@ -27,11 +30,18 @@ public class DeathandRespawn : MonoBehaviour {
 	}
 
 	public void Death(){
-		
-		Vector3 pos = this.transform.position + new Vector3(0,1f,0);
-		GameObject corp = Instantiate (Corpse, pos, Corpse.transform.rotation);
-		//corp.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		Lives--;
 
+		if (Lives == 0) {
+			GameObject[] dead_bodies = GameObject.FindGameObjectsWithTag ("Corpse");
+			for (int i = 0; i < dead_bodies.Length; i++) {
+				Destroy (dead_bodies [i]);
+			}
+			Lives = 4;
+		} else {
+			Vector3 pos = this.transform.position + new Vector3 (0, 1f, 0);
+			GameObject corp = Instantiate (Corpse, pos, Corpse.transform.rotation);
+		}
 		Respawn ();
 	}
 
