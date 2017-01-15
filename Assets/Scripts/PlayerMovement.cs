@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     float forwardInput, sideInput;
 	float jumpCounter = 0;
+	float Dest_Angle;
+	int rotDirection = 1;
 	bool canMove = true; 
 
 	Transform Player_Body;
@@ -63,10 +65,8 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    void Update()
-    {
-        
-        //Turn();
+    void Update(){
+        Turn();
     }
 
     void FixedUpdate()
@@ -109,8 +109,7 @@ public class PlayerMovement : MonoBehaviour
         charController.Move(movement * Time.deltaTime);
     }
 
-    void Run()
-    {
+    void Run(){
 
 		double movementScaling = ((charController.isGrounded) ? 1 : 0.5);
         if (Mathf.Abs(forwardInput) > inputDelay)
@@ -131,12 +130,49 @@ public class PlayerMovement : MonoBehaviour
 			movement.z = 0;
 		}
 
+		if (movement.x != 0 || movement.z != 0) {
+			
+			if (movement.x > 0) {
+				//print ("front");
+				Dest_Angle = 180;
+			}
+			else if (movement.x < 0) {
+				//print ("back");
+				Dest_Angle = 0;
+			}
+
+			if (movement.z > 0) {
+				//print ("left");
+				Dest_Angle = 90;
+			}
+			else if (movement.z < 0) {
+				//print ("right");
+				Dest_Angle = 270;
+			}
+			float YAngle = this.transform.rotation.eulerAngles.y;
+
+			if (Dest_Angle < YAngle - 180) {
+				rotDirection = -1;
+			} else {
+				rotDirection = 1;
+			}	
+
+		}
 
     }
 
-    void Turn()
-    {	
-	 }
+    void Turn(){
+		float YAngle = this.transform.rotation.eulerAngles.y;
+		//print (YAngle);
+		float rotSpeed = 400;
+
+
+
+		if(Mathf.Abs(Dest_Angle - YAngle) > 8){
+			transform.Rotate (0, rotSpeed * Time.deltaTime * rotDirection, 0);		
+		}
+				
+	}
 
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
