@@ -1951,7 +1951,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a16259a4618c1384793b6462f9632a53, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -2117,6 +2117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad12da931c55bd41a3436bc010598cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawn: {fileID: 8300000, guid: 9ffeb199f74cbcb409520c69d2e6e2a0, type: 3}
+  death: {fileID: 8300000, guid: a16259a4618c1384793b6462f9632a53, type: 3}
   Corpse: {fileID: 1188863786630432, guid: 807c72ca26c4cb8488cd77dcaebc82e2, type: 2}
 --- !u!143 &143606907766008642
 CharacterController:

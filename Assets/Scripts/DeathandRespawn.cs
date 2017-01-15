@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DeathandRespawn : MonoBehaviour {
     AudioSource sound;
+    public AudioClip spawn;
+    public AudioClip death;
 	public GameObject Corpse;
 	Transform Respawn_Platform;
 	PlayerMovement movementScript;
@@ -28,8 +30,10 @@ public class DeathandRespawn : MonoBehaviour {
 
 
 	public void Respawn(){
-		this.transform.position = Respawn_Platform.position + new Vector3 (0, 20, 0);
+		this.transform.position = Respawn_Platform.position + new Vector3 (0, 12, 0);
 		GetComponent<PlayerMovement>().restartJump ();
+        sound.clip = spawn;
+        sound.Play();
 	}
 
 	public void Death(bool killed){
@@ -50,6 +54,7 @@ public class DeathandRespawn : MonoBehaviour {
 		GameObject corp = Instantiate (Corpse, pos, rot);
 
 		Respawn ();
+        sound.clip = death;
         sound.Play();
 	
 	}
