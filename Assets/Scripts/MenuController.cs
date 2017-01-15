@@ -17,6 +17,7 @@ public class MenuController : MonoBehaviour {
 
 	public void Restart(){
 		SceneManager.LoadScene ("Start");
+		Debug.Log ("restarting");
 	}
 
 	public void Quit(){
