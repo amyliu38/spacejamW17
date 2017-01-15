@@ -16,4 +16,10 @@ public abstract class InteractTileBase : MonoBehaviour {
 	public abstract void Open ();
 
 	public abstract void Close ();
+
+    public abstract void SoundDown();
+
+    public abstract void SoundUp();
+
+    public abstract void SoundContact();
 }
