@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Turn(){
 		float YAngle = this.transform.rotation.eulerAngles.y;
-		print (YAngle);
+		//print (YAngle);
 		float rotSpeed = 400;
 
 
