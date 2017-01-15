@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class DeathandRespawn : MonoBehaviour {
 	public GameObject Corpse;
 	Transform Respawn_Platform;
 	// Use this for initialization
+
+	int Lives = 4;
+
 	void Start () {
 		Respawn_Platform = GameObject.FindGameObjectWithTag ("SpawnPoint").transform;
 
@@ -27,10 +31,13 @@ public class DeathandRespawn : MonoBehaviour {
 	}
 
 	public void Death(){
-		
-		Vector3 pos = this.transform.position + new Vector3(0,1f,0);
+		Lives--;
+
+		if (Lives == 0) {
+			SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
+		} 
+		Vector3 pos = this.transform.position + new Vector3 (0, 1f, 0);
 		GameObject corp = Instantiate (Corpse, pos, Corpse.transform.rotation);
-		//corp.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 
 		Respawn ();
 	}
