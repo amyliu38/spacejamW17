@@ -20,7 +20,7 @@ public class Bolts : MonoBehaviour {
 		if (coll.transform.CompareTag ("Player")) {
 			//update UI? lower elevator?
 			elevator.LowerElevator();
-			Destroy (gameObject);
+			Destroy (this.transform.parent.gameObject);
 		}
 	}
 }
