@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpSpeed = 100; //initial jump speed, affects height
 	public float numJumps = 1;
 
+    public CanvasGroup credits;
 
     Vector3 movement = Vector3.zero; // 
     CharacterController charController; //gives access to isGrounded, Move (allows movement and jump)
@@ -22,9 +23,9 @@ public class PlayerMovement : MonoBehaviour
 	float jumpCounter = 0;
 	float Dest_Angle;
 	int rotDirection = 1;
-	bool canMove = true; 
+	bool canMove = true;
 
-
+    ParticleSystem love = null;
 	Transform Player_Body;
 
 	Transform axisGuide;
@@ -57,7 +58,19 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogError("The Character needs a CharacterController");
         }
 
-		Player_Body = GetComponentInChildren<Transform> ();
+        
+        if (GameObject.FindGameObjectWithTag("Lovemaking").GetComponent<ParticleSystem>())
+        {
+            love = GameObject.FindGameObjectWithTag("Lovemaking").GetComponent<ParticleSystem>();
+            love.Stop();
+        }
+        else
+        {
+           // Debug.LogError("The Character needs a Particle Effect");
+        }
+
+
+        Player_Body = GetComponentInChildren<Transform> ();
 
 
         forwardInput = 0;
@@ -99,7 +112,8 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
-		if (Input.GetButton("Fire1") && charController.isGrounded){
+		if (Input.GetButton("Fire1") && charController.isGrounded && GetComponent<DeathandRespawn>().getLives()>1)
+        {
 			//print("Jump");
 			GetComponent<DeathandRespawn>().Death(false);
 
@@ -189,6 +203,16 @@ public class PlayerMovement : MonoBehaviour
 		if(hit.gameObject.tag.Equals("Trap")){
 			GetComponent<DeathandRespawn>().Death(true);
 		}
+
+        if (hit.gameObject.tag.Equals("Girlfriend"))
+        {
+            print("Love");
+            if (!love.isPlaying)
+            {
+                love.Play();
+                credits.alpha = 1f;
+            }
+        }
 			
 		Rigidbody body = hit.collider.attachedRigidbody;
 
@@ -221,4 +245,6 @@ public class PlayerMovement : MonoBehaviour
 	public float getDestAngle(){
 		return Dest_Angle;
 	}
+
+    
 }
