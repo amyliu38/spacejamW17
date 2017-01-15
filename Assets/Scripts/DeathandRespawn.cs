@@ -54,11 +54,8 @@ public class DeathandRespawn : MonoBehaviour {
 	
 	}
 
-
-
-
-
-
-
-
+    public int getLives()
+    {
+        return Lives;
+    }
 }

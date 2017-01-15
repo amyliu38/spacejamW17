@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour {
 
 	Animator anim;
 	void Start(){
-		anim = FindObjectOfType<Animator>().GetComponent<Animator> ();	
+		anim = GameObject.FindGameObjectWithTag ("Player").GetComponent<Animator> ();
 	}
 
 	public void StartGame(){
