@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,15 +34,11 @@ public class DeathandRespawn : MonoBehaviour {
 		Lives--;
 
 		if (Lives == 0) {
-			GameObject[] dead_bodies = GameObject.FindGameObjectsWithTag ("Corpse");
-			for (int i = 0; i < dead_bodies.Length; i++) {
-				Destroy (dead_bodies [i]);
-			}
-			Lives = 4;
-		} else {
-			Vector3 pos = this.transform.position + new Vector3 (0, 1f, 0);
-			GameObject corp = Instantiate (Corpse, pos, Corpse.transform.rotation);
-		}
+			SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
+		} 
+		Vector3 pos = this.transform.position + new Vector3 (0, 1f, 0);
+		GameObject corp = Instantiate (Corpse, pos, Corpse.transform.rotation);
+
 		Respawn ();
 	}
 
