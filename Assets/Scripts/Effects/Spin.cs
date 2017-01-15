@@ -14,11 +14,11 @@ public class Spin : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		counter++;
-		if (counter > switchDelay) {
-			randomizeDirection ();
-			counter = 0;
-		}
+		//counter++;
+		///if (counter > switchDelay) {
+		//	randomizeDirection ();
+		//	counter = 0;
+		//}
 
 		this.transform.Rotate (rotDirection * angularSpeed * Time.deltaTime);	
 	}
@@ -26,7 +26,7 @@ public class Spin : MonoBehaviour {
 	void randomizeDirection(){
 		do {
 			rotDirection.x = Random.Range (1, 2000) % 2 *  ((Random.Range (1, 2000) % 2 == 0)? 1: -1);
-			rotDirection.y = Random.Range (1, 2000) % 2 *  ((Random.Range (1, 2000) % 2 == 0)? 1: -1);
+			//rotDirection.y = Random.Range (1, 2000) % 2 *  ((Random.Range (1, 2000) % 2 == 0)? 1: -1);
 			rotDirection.z = Random.Range (1, 2000) % 2 *  ((Random.Range (1, 2000) % 2 == 0)? 1: -1);
 		} while(rotDirection == Vector3.zero);
 	
