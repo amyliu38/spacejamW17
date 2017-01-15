@@ -25,9 +25,9 @@ public class Spin : MonoBehaviour {
 
 	void randomizeDirection(){
 		do {
-			rotDirection.x = Random.Range (1, 2000) % 2;
-			rotDirection.y = Random.Range (1, 2000) % 2;
-			rotDirection.z = Random.Range (1, 2000) % 2;
+			rotDirection.x = Random.Range (1, 2000) % 2 *  ((Random.Range (1, 2000) % 2 == 0)? 1: -1);
+			rotDirection.y = Random.Range (1, 2000) % 2 *  ((Random.Range (1, 2000) % 2 == 0)? 1: -1);
+			rotDirection.z = Random.Range (1, 2000) % 2 *  ((Random.Range (1, 2000) % 2 == 0)? 1: -1);
 		} while(rotDirection == Vector3.zero);
 	
 	}
