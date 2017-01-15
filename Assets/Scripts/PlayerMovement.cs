@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.LogError("The Character needs a Particle Effect");
+           // Debug.LogError("The Character needs a Particle Effect");
         }
 
 
