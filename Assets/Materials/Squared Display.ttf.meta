@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 83f4879ce6e5ff044bc7c5f50707d1c2
+timeCreated: 1484775195
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Squared Display
+  fontNames:
+  - Squared Display
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

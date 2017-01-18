@@ -7,11 +7,14 @@ public class FadeToBlack : MonoBehaviour {
 
 	CanvasGroup panel;
 	static GameObject fadingCanvas = null;
+	AudioSource music;
 
 	void Awake() {
 		if (fadingCanvas == null) {
 			DontDestroyOnLoad (gameObject);
 			fadingCanvas = gameObject;
+			music = GetComponent<AudioSource>();
+			music.Play();
 		}
 		panel = GetComponentInChildren<CanvasGroup> ();
 	}
